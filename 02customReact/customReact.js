@@ -1,10 +1,27 @@
 function customRender(reactElement, container){
-    const domElement = document.createElement(reactElement.type) // create a new dom element
-    domElement.innerHtml = reactElement.children // set the inner text of the dom element
-    domElement.setAttribute('href', reactElement.props.href) // set the href attribute of the dom element
-    domElement.setAttribute('target', reactElement.props.target) // set the target attribute of the dom element
+    /*
+    basic v1 as it adds attributes 1 by 1 which is not efficient
+    const domElement = document.createElement(reactElement.type) 
+    domElement.innerHtml = reactElement.children 
+    domElement.setAttribute('href', reactElement.props.href) 
+    domElement.setAttribute('target', reactElement.props.target) 
+    container.appendChild(domElement) 
+    */
+   
+    // v2
+
+    const domElement = document.createElement(reactElement.type)
+    domElement.innerHTML = reactElement.children
+    for(const prop in reactElement.props){
+        if(prop == 'children') continue;
+        domElement.setAttribute(prop, reactElement.props[prop])
+
+    }
+    container.appendChild(domElement)
 
 }
+// basically we are creating a new dom element and setting the inner text and attributes of the dom element
+// and then we are appending the dom element to the container element
 const reactElement = {
     type: 'a',
     props: {
