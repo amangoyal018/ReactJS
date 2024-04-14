@@ -7,12 +7,18 @@ function App() {
 
   const addValue = () =>{
     // counter = counter + 1; 
+    setCounter((prev) => prev + 1);
+    setCounter((prev) => prev + 1);
+    setCounter((prev) => prev + 1);
+    setCounter((prev) => prev + 1);
     setCounter(counter + 1);
     console.log("clicked",counter);
     
   }
   const subValue = () =>{
     // counter = counter + 1; 
+    setCounter(counter - 1);
+    setCounter(counter - 1);
     setCounter(counter - 1);
     console.log("clicked",counter);
     
